@@ -1,7 +1,7 @@
 %define realname Catalyst-Plugin-Images
 %define name	perl-%{realname}
 %define version	0.01
-%define release	%mkrel 2
+%define release	%mkrel 3
 
 Summary:	Generate image tags for static files
 Name:		%{name}
