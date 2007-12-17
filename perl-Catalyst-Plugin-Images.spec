@@ -25,7 +25,6 @@ BuildRequires:	perl(Test::WWW::Mechanize::Catalyst)
 BuildRequires:  perl(Test::use::ok)
 Requires:	perl >= 5.8.1
 BuildArch:	noarch
-Buildroot:	%{_tmppath}/%{name}-root
 
 %description
 This plugin aims to assist you in generating image tags that contain
