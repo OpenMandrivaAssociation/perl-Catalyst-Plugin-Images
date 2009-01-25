@@ -1,7 +1,7 @@
-%define realname Catalyst-Plugin-Images
-%define name	perl-%{realname}
-%define version	0.01
-%define release	%mkrel 5
+%define module Catalyst-Plugin-Images
+%define name	perl-%{module}
+%define version	0.02
+%define release	%mkrel 1
 
 Summary:	Generate image tags for static files
 Name:		%{name}
@@ -9,13 +9,8 @@ Version:	%{version}
 Release:	%{release}
 License:	Artistic/GPL
 Group:		Development/Perl
-URL:		http://search.cpan.org/dist/%{realname}/
-Source:		ftp://ftp.perl.org/pub/CPAN/modules/by-module/Catalyst/%{realname}-%{version}.tar.bz2
-%if %{mdkversion} < 1010
-BuildRequires:	perl-devel >= 5.8.1
-%else
-BuildRequires:	perl >= 5.8.1
-%endif
+URL:        http://search.cpan.org/dist/%{module}
+Source:     http://www.cpan.org/modules/by-module/Catalyst/%{module}-%{version}.tar.gz
 BuildRequires:	perl(Catalyst) >= 5.50
 BuildRequires:	perl(HTML::Entities)
 BuildRequires:	perl(Image::Size)
@@ -23,33 +18,31 @@ BuildRequires:	perl(Module::Build)
 BuildRequires:	perl(Path::Class)
 BuildRequires:	perl(Test::WWW::Mechanize::Catalyst)
 BuildRequires:  perl(Test::use::ok)
-Requires:	perl >= 5.8.1
 BuildArch:	noarch
-Buildroot:	%{_tmppath}/%{name}-root
+Buildroot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This plugin aims to assist you in generating image tags that contain
 alt text, a properly escaped src attribute, height and width info,
 without worrying too much.
 
-
 %prep
-%setup -q -n %{realname}-%{version}
+%setup -q -n %{module}-%{version}
 
 %build
-%__perl Build.PL installdirs=vendor
-./Build
+%__perl Makefile.PL INSTALLDIRS=vendor
+%make
 
 %check
-./Build test
+make test
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-./Build install destdir=%{buildroot}
+rm -rf %{buildroot}
+%makeinstall_std
 
 %files
 %defattr(-,root,root)
-%doc README
+%doc Changes
 %{_mandir}/*/*
 %{perl_vendorlib}/Catalyst
 
