@@ -16,6 +16,7 @@ BuildRequires:	perl(HTML::Entities)
 BuildRequires:	perl(Image::Size)
 BuildRequires:	perl(Module::Build)
 BuildRequires:	perl(Path::Class)
+BuildRequires:	perl(MRO::Compat)
 BuildRequires:	perl(Test::WWW::Mechanize::Catalyst)
 BuildRequires:  perl(Test::use::ok)
 BuildArch:	noarch
