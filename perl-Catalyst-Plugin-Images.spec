@@ -1,15 +1,13 @@
 %define upstream_name    Catalyst-Plugin-Images
-%define upstream_version 0.02
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	6
+Version:	0.02
+Release:	7
 
 Summary:	Generate image tags for static files
 License:	Artistic/GPL
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/Catalyst-Plugin-Images
-Source0:	https://cpan.metacpan.org/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Images-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/B/BO/BOBTFISH/Catalyst-Plugin-Images-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -29,7 +27,7 @@ alt text, a properly escaped src attribute, height and width info,
 without worrying too much.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -54,9 +52,7 @@ make test
 
 * Sat Aug 01 2009 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 0.20.0-1mdv2011.0
 + Revision: 406264
-- rebuild using %%perl_convert_version
-
-* Sun Jan 25 2009 Guillaume Rousse <guillomovitch@mandriva.org> 0.02-1mdv2009.1
+- rebuild using %0.02 Sun Jan 25 2009 Guillaume Rousse <guillomovitch@mandriva.org> 0.02-1mdv2009.1
 + Revision: 333423
 - new version
 
